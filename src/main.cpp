@@ -24,7 +24,8 @@ std::vector<city> createData(int numCities, std::string fileName)
 	}
 
 	//Randomly shuffle the sitties and pick the first N to be used
-	std::random_shuffle(cities.begin(), cities.end());
+	std::random_device rd;
+	std::shuffle(cities.begin(), cities.end(), rd);
 
 	return std::vector<city>(cities.begin(),cities.begin()+numCities);
 }
@@ -33,35 +34,36 @@ std::vector<city> createData(int numCities, std::string fileName)
 int main(int argc, char** argv)
 {
 		std::string fileName;
-	int numCities, numThreads, speed, numParticles, numIterations;
+	int numCities, numThreads, speed, numParticles, numIterations, maxVelocity;
 	if (argc == 6)
 	{
 
 		fileName = argv[1];
 		numParticles = std::stoi(argv[2]);
-		numCities = std::stoi(argv[3]);
-		numIterations = std::stoi(argv[4]);
-		numThreads = std::stoi(argv[5]);
-		speed = std::stoi(argv[6]);
+		maxVelocity = std::stoi(argv[3]);
+		numCities = std::stoi(argv[4]);
+		numIterations = std::stoi(argv[5]);
+		numThreads = std::stoi(argv[6]);
+		speed = std::stoi(argv[7]);
 		
 	}
 	else if (argc == 1)
 	{
 		fileName = "../data/cityData.csv";
-		numParticles = 50;
+		numParticles = 500;
 		numCities = 150;
 		numThreads = 1;
-		numIterations = 500;
+		numIterations = 1000;
 		speed = 60;
+		maxVelocity = 5;
 	}
 	else
 	{
-		throw std::invalid_argument("Please input 0 or 6 parameters");
+		throw std::invalid_argument("Please input 0 or 7 parameters");
 	}
 
 	std::vector<city> cities = createData(numCities, fileName);
-
-	PSO(numParticles, numCities, numIterations, 0, numCities-1, -(numCities/10), numCities/10, &tspFitness, cities, speed, numThreads);
+	PSO(numParticles, numCities, numIterations, 0, numCities-1, -maxVelocity, maxVelocity, &tspFitness, cities, speed, numThreads);
 
 	return 0;
 }

@@ -1,7 +1,11 @@
 #include <math.h>
 #include "cityData.h"
+#include "particle.h"
 
-double tspFitness(std::vector<std::vector<int>> particles, int numCities, int particle, std::vector<city> cities, int speed)
+template<typename T>
+using vec = std::vector<T>;
+
+double tspFitness(vec<particle> particles, int numCities, int particle, vec<city> cities, int speed)
 {
 	city a;
 	city b;
@@ -11,8 +15,8 @@ double tspFitness(std::vector<std::vector<int>> particles, int numCities, int pa
 
     for(int i = 0; i < numCities-1; i++)
 	{
-		a = cities[particles[particle][i]];
-		b = cities[particles[particle][i+1]];
+		a = cities[particles[particle].getPosition(i)];
+		b = cities[particles[particle].getPosition(i+1)];
 
 		distance = 3959 * acos(sin(std::get<0>(b.getLocation()))* sin(std::get<0>(a.getLocation()))) + (cos(std::get<0>(b.getLocation()))*cos(std::get<0>(a.getLocation()))*cos(std::get<0>(b.getLocation())-std::get<0>(a.getLocation())));
 

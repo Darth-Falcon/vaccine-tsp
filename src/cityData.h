@@ -11,6 +11,7 @@ class city
 {
     public:
     city();
+    city(const city &c);
     city(std::string, std::string, int, double, std::string, std::string);
     //getters
     std::string getName() {return name;}
