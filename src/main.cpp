@@ -33,15 +33,16 @@ std::vector<city> createData(int numCities, std::string fileName)
 int main(int argc, char** argv)
 {
 		std::string fileName;
-	int numCities, numThreads, speed, numParticles;
+	int numCities, numThreads, speed, numParticles, numIterations;
 	if (argc == 6)
 	{
 
 		fileName = argv[1];
 		numParticles = std::stoi(argv[2]);
 		numCities = std::stoi(argv[3]);
-		numThreads = std::stoi(argv[4]);
-		speed = std::stoi(argv[5]);
+		numIterations = std::stoi(argv[4]);
+		numThreads = std::stoi(argv[5]);
+		speed = std::stoi(argv[6]);
 		
 	}
 	else if (argc == 1)
@@ -50,16 +51,17 @@ int main(int argc, char** argv)
 		numParticles = 50;
 		numCities = 150;
 		numThreads = 1;
+		numIterations = 500;
 		speed = 60;
 	}
 	else
 	{
-		throw std::invalid_argument("Please input 0 or 5 parameters");
+		throw std::invalid_argument("Please input 0 or 6 parameters");
 	}
 
 	std::vector<city> cities = createData(numCities, fileName);
 
-	PSO(numParticles, numCities, 3000, 0, numCities-1, -(numCities/10), numCities/10, &tspFitness, cities, speed, numThreads);
+	PSO(numParticles, numCities, numIterations, 0, numCities-1, -(numCities/10), numCities/10, &tspFitness, cities, speed, numThreads);
 
 	return 0;
 }
