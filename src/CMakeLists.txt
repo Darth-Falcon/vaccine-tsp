@@ -1,2 +1,6 @@
 SET(pso-tsp_SRCS CStopWatch.cpp cityData.cpp particle.cpp main.cpp)
 ADD_EXECUTABLE(tsp ${pso-tsp_SRCS})
+find_package(OpenMP)
+if(OpenMP_CXX_FOUND)
+    target_link_libraries(tsp PUBLIC OpenMP::OpenMP_CXX)
+endif()

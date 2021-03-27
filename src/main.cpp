@@ -50,9 +50,9 @@ int main(int argc, char** argv)
 	else if (argc == 1)
 	{
 		fileName = "../data/cityData.csv";
-		numParticles = 500;
+		numParticles = 400;
 		numCities = 150;
-		numThreads = 1;
+		numThreads = 16;
 		numIterations = 1000;
 		speed = 60;
 		maxVelocity = 5;
@@ -61,6 +61,9 @@ int main(int argc, char** argv)
 	{
 		throw std::invalid_argument("Please input 0 or 7 parameters");
 	}
+
+	omp_set_nested(true);
+	omp_set_num_threads(numThreads);
 
 	std::vector<city> cities = createData(numCities, fileName);
 	PSO(numParticles, numCities, numIterations, 0, numCities-1, -maxVelocity, maxVelocity, &tspFitness, cities, speed, numThreads);
