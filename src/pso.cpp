@@ -98,7 +98,7 @@ void PSO(const int Np, const int Nd, const int Nt, const double vMin, const doub
 	double gBestValue = -INFINITY;
 
 	int bestTimeStep = 0;
-
+	double initialBest = -INFINITY;
 
 	int numEvals = 0;
 
@@ -109,7 +109,7 @@ void PSO(const int Np, const int Nd, const int Nt, const double vMin, const doub
 	CStopWatch timer;
 
 	timer.startTimer();
-	#pragma omp parallel default(none) shared(Np, Nd, Nt, objFunc, particles, speed, cities, timer, zeroOne, vMin, vMax, vel, indexes, worstResults, bestTimeStep, gBestValue, gBestPosition, changes, std::cout) private(vValue) reduction(+:numEvals)
+	#pragma omp parallel default(none) shared(Np, Nd, Nt, objFunc, particles, speed, cities, timer, zeroOne, vMin, vMax, vel, indexes, worstResults, bestTimeStep, gBestValue, gBestPosition, changes, initialBest, std::cout) private(vValue) reduction(+:numEvals)
 	{
 		std::random_device rd;
 		std::mt19937 rng(rd());
@@ -136,7 +136,16 @@ void PSO(const int Np, const int Nd, const int Nt, const double vMin, const doub
 			particles[p].setFitness(objFunc(particles, Nd, p, cities, speed));
 			numEvals++;
 		}
-
+		#pragma omp single
+		{
+			for (int p = 0; p < Np; p++)
+			{
+				if (particles[p].getFitness() > gBestValue)
+				{
+					initialBest = particles[p].getFitness();
+				}
+			}
+		}
 
 		//Loop for Nt iterations
 		for( int t = 0; t < Nt; t++)
@@ -238,7 +247,7 @@ void PSO(const int Np, const int Nd, const int Nt, const double vMin, const doub
 	{
 		std::cout << c+1 << ". " << cities[gBestPosition[c]].getName() << ", " << cities[gBestPosition[c]].getState() << "\n";
 	}
-	std::cout << "\nNumber of vaccines distributed per hour: " << gBestValue << "\n\n";
+	std::cout << "\nNumber of vaccines distributed per hour: " << gBestValue << " which is an improvement on a random selection by "<< std::setprecision(4) << 100*(initialBest/gBestValue) << "%\n\n";
 
 	std::cout << "This result was found on step " << bestTimeStep << " and took " << timer.getElapsedTimeInSec()  << " seconds to find using " << numEvals << " evaluations\n\n";
 

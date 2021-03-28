@@ -57,7 +57,6 @@ int main(int argc, char* argv[])
 		numCities = 10;
 		numIterations = 2000;
 		numThreads = 16;
-
 		speed = 60;
 
 	}
