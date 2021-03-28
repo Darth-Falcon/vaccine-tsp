@@ -1,0 +1,159 @@
+
+
+Best order of cities to distribute vaccine
+
+1. Oklahoma City, Oklahoma
+2. Jackson, Mississippi
+3. Charlotte, North Carolina
+4. Madison, Wisconsin
+5. Preston, Georgia
+6. Arlington, Texas
+7. Surprise, Arizona
+8. Fort Worth, Texas
+9. Knoxville, Tennessee
+10. Baton Rouge, Louisiana
+11. Tucson, Arizona
+12. Chattanooga, Tennessee
+13. Cape Coral, Florida
+14. Boise, Idaho
+15. Lancaster, California
+16. California City, California
+17. Springfield, Missouri
+18. Chesapeake , Virginia
+19. Kansas City, Kansas
+20. Independence, Missouri
+21. Fresno, California
+22. Port St. Lucie, Florida
+23. Aurora, Colorado
+24. Brownsville, Texas
+25. Norman, Oklahoma
+26. Atlanta, Georgia
+27. Albuquerque, New Mexico
+28. Henderson, Nevada
+29. Cusseta, Georgia
+30. Jonesboro, Arkansas
+31. Hartsville, Tennessee
+32. Cleveland, Ohio
+33. Fort Wayne, Indiana
+34. Unalaska, Alaska
+35. Valdez, Alaska
+36. Suffolk, Virginia
+37. Tallahassee, Florida
+38. Port Arthur, Texas
+39. Houston, Texas
+40. Corpus Christi, Texas
+41. North Port, Florida
+42. Los Angeles, California
+43. Virginia Beach, Virginia
+44. San Jose, California
+45. Anaconda, Montana
+46. Des Moines, Iowa
+47. Las Cruces, New Mexico
+48. Charleston, South Carolina
+49. Nightmute, Alaska
+50. Birmingham, Alabama
+51. Bakersfield, California
+52. North Las Vegas, Nevada
+53. Wrangell, Alaska
+54. Colorado Springs, Colorado
+55. Austin, Texas
+56. Raleigh, North Carolina
+57. Orlando, Florida
+58. Goodyear, Arizona
+59. Seattle, Washington
+60. Beaumont, Texas
+61. Lynchburg, Tennessee
+62. Boulder City, Nevada
+63. Presque Isle, Maine
+64. Abilene, Texas
+65. Marana, Arizona
+66. Sierra Vista, Arizona
+67. Oak Ridge, Tennessee
+68. Little Rock, Arkansas
+69. El Reno, Oklahoma
+70. Cincinnati, Ohio
+71. New York City, New York
+72. Toledo, Ohio
+73. Detroit, Michigan
+74. Lincoln, Nebraska
+75. Palm Coast, Florida
+76. Indianapolis, Indiana
+77. San Diego, California
+78. Portland, Oregon
+79. Baltimore , Maryland
+80. Palm Springs, California
+81. Sitka, Alaska
+82. Wichita, Kansas
+83. Laredo, Texas
+84. Fernley, Nevada
+85. Scottsdale, Arizona
+86. Peoria, Arizona
+87. Lexington, Kentucky
+88. Babbitt, Minnesota
+89. Sacramento, California
+90. Dallas, Texas
+91. St. Marys, Pennsylvania
+92. Lawton, Oklahoma
+93. Fremont, California
+94. Hibbing, Minnesota
+95. Montgomery, Alabama
+96. Riverside, California
+97. Caribou, Maine
+98. Amarillo, Texas
+99. Las Vegas, Nevada
+100. Memphis, Tennessee
+101. Butte, Montana
+102. Denton, Texas
+103. Durham, North Carolina
+104. Carson City , Nevada
+105. Edmond, Oklahoma
+106. Greensboro, North Carolina
+107. Dothan, Alabama
+108. Clarksville, Tennessee
+109. Palmdale, California
+110. Athens, Georgia
+111. Ellsworth, Maine
+112. Huntsville, Alabama
+113. Juneau, Alaska
+114. Buckeye, Arizona
+115. Waco, Texas
+116. Mesa, Arizona
+117. Savannah, Georgia
+118. Salt Lake City, Utah
+119. Phoenix, Arizona
+120. Omaha, Nebraska
+121. Columbia, South Carolina
+122. Lubbock, Texas
+123. Winston-Salem, North Carolina
+124. Tulsa, Oklahoma
+125. Nashville, Tennessee
+126. Bunnell, Florida
+127. Philadelphia, Pennsylvania
+128. Mobile, Alabama
+129. El Paso, Texas
+130. Louisville, Kentucky
+131. Columbus, Georgia
+132. Casa Grande, Arizona
+133. Augusta, Georgia
+134. Georgetown, Georgia
+135. Kansas City, Missouri
+136. Denver, Colorado
+137. Reno, Nevada
+138. Yuma, Arizona
+139. Tampa, Florida
+140. New Orleans, Louisiana
+141. Anchorage, Alaska
+142. Fayetteville, North Carolina
+143. Columbus, Ohio
+144. Jacksonville, Florida
+145. Eloy, Arizona
+146. Chicago, Illinois
+147. San Antonio, Texas
+148. Rio Rancho, New Mexico
+149. Milwaukee, Wisconsin
+150. Shreveport, Louisiana
+
+THe number of vaccines distributed per hour is 12100.2, which is an improvement on a random selection by 45.94%
+
+This result was found on step 709 and took 37.8 seconds to find using 1001000 evaluations
+

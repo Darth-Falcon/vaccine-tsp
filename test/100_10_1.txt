@@ -1,0 +1,19 @@
+
+
+Best order of cities to distribute vaccine
+
+1. Sitka, Alaska
+2. Wrangell, Alaska
+3. Anchorage, Alaska
+4. Houston, Texas
+5. Jacksonville, Florida
+6. Oklahoma City, Oklahoma
+7. Anaconda, Montana
+8. Butte, Montana
+9. Juneau, Alaska
+10. Phoenix, Arizona
+
+THe number of vaccines distributed per hour is 42537.4, which is an improvement on a random selection by 95.07%
+
+This result was found on step 924 and took 0.7475 seconds to find using 100100 evaluations
+

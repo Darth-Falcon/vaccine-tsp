@@ -1,0 +1,34 @@
+
+
+Best order of cities to distribute vaccine
+
+1. Memphis, Tennessee
+2. Waco, Texas
+3. Charleston, South Carolina
+4. Cincinnati, Ohio
+5. Fort Worth, Texas
+6. Phoenix, Arizona
+7. Orlando, Florida
+8. Colorado Springs, Colorado
+9. Fayetteville, North Carolina
+10. Lawton, Oklahoma
+11. Georgetown, Georgia
+12. Norman, Oklahoma
+13. North Las Vegas, Nevada
+14. Durham, North Carolina
+15. Milwaukee, Wisconsin
+16. Lancaster, California
+17. Virginia Beach, Virginia
+18. Edmond, Oklahoma
+19. Salt Lake City, Utah
+20. St. Marys, Pennsylvania
+21. Sierra Vista, Arizona
+22. Port Arthur, Texas
+23. Houston, Texas
+24. Cleveland, Ohio
+25. Savannah, Georgia
+
+THe number of vaccines distributed per hour is 20506.6, which is an improvement on a random selection by 20.73%
+
+This result was found on step 486 and took 0.2384 seconds to find using 100100 evaluations
+

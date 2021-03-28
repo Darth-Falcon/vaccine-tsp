@@ -24,10 +24,11 @@ class particle
     void setFitness(double);
     void setBestPosition(int, int);
     void setBestValue(double);
-
+    void updateBest();
 
     bool operator<(const particle&);
     bool operator>(const particle&);
+    bool operator==(const particle&);
 
 
     private:

@@ -1,0 +1,34 @@
+
+
+Best order of cities to distribute vaccine
+
+1. Butte, Montana
+2. Denton, Texas
+3. Arlington, Texas
+4. Fort Worth, Texas
+5. San Diego, California
+6. Lubbock, Texas
+7. Clarksville, Tennessee
+8. Jacksonville, Florida
+9. St. Marys, Pennsylvania
+10. Las Cruces, New Mexico
+11. Chattanooga, Tennessee
+12. Boise, Idaho
+13. Beaumont, Texas
+14. Winston-Salem, North Carolina
+15. Madison, Wisconsin
+16. Port St. Lucie, Florida
+17. Tampa, Florida
+18. Charlotte, North Carolina
+19. Tallahassee, Florida
+20. Tucson, Arizona
+21. El Paso, Texas
+22. Columbus, Georgia
+23. Sierra Vista, Arizona
+24. Cusseta, Georgia
+25. Goodyear, Arizona
+
+THe number of vaccines distributed per hour is 7435.29, which is an improvement on a random selection by 74.68%
+
+This result was found on step 738 and took 0.3704 seconds to find using 100100 evaluations
+

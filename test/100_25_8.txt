@@ -1,0 +1,34 @@
+
+
+Best order of cities to distribute vaccine
+
+1. Carson City , Nevada
+2. Colorado Springs, Colorado
+3. Goodyear, Arizona
+4. El Paso, Texas
+5. Fresno, California
+6. Boulder City, Nevada
+7. Butte, Montana
+8. Georgetown, Georgia
+9. Jonesboro, Arkansas
+10. Greensboro, North Carolina
+11. Tulsa, Oklahoma
+12. Nashville, Tennessee
+13. Houston, Texas
+14. Yuma, Arizona
+15. Baton Rouge, Louisiana
+16. Columbia, South Carolina
+17. Little Rock, Arkansas
+18. Des Moines, Iowa
+19. Ellsworth, Maine
+20. Lincoln, Nebraska
+21. San Jose, California
+22. Shreveport, Louisiana
+23. Corpus Christi, Texas
+24. Charleston, South Carolina
+25. Salt Lake City, Utah
+
+THe number of vaccines distributed per hour is 32699.8, which is an improvement on a random selection by 26.54%
+
+This result was found on step 301 and took 0.332 seconds to find using 100100 evaluations
+

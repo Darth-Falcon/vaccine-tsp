@@ -150,11 +150,10 @@ void PSO(const int Np, const int Nd, const int Nt, const double vMin, const doub
 		//Loop for Nt iterations
 		for( int t = 0; t < Nt; t++)
 		{
-			if(omp_get_thread_num() == 0)
+			#pragma omp master
 			{
 				if(t%100 == 0)
 				{
-					#pragma omp critical
 					std::cout<< "Elapsed Time: " << timer.getElapsedTimeInSec() << "s, Time Step: " << t << "/" << Nt << "\n";
 				}
 			}
@@ -186,7 +185,7 @@ void PSO(const int Np, const int Nd, const int Nt, const double vMin, const doub
 			}
 
 			//Update Bests
-			#pragma omp single
+			#pragma omp master
 			{
 				for (int p = 0; p < Np; p++)
 				{
@@ -199,18 +198,18 @@ void PSO(const int Np, const int Nd, const int Nt, const double vMin, const doub
 						}
 						bestTimeStep = t;
 					}
-
-					// Local
-					if (particles[p].getFitness() > particles[p].getBestValue())
-					{
-						particles[p].setBestValue(particles[p].getFitness());
-						for (int i = 0; i < Nd; i++)
-						{
-							particles[p].setBestPosition(i, particles[p].getPosition(i));
-						}
-					}
 				}
 			}
+			#pragma omp for
+			for (int p = 0; p < Np; p++)
+			{
+				// Local
+				particles[p].updateBest();
+			}			
+
+			#pragma omp barrier
+				
+			
 			//Update Velocities
 			#pragma omp single
 			{

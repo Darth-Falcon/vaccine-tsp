@@ -37,12 +37,24 @@
     {
         bestValue = newBestValue;
     }
+    void particle::updateBest()
+    {
+        if(fitness > bestValue)
+        {
+            bestValue = fitness;
+            bestPosition = position;
+        }
+    }
 
-     bool particle::operator<(const particle& p)
-     {
-         return bestValue < p.bestValue;
-     }
+    bool particle::operator<(const particle& p)
+    {
+        return bestValue < p.bestValue;
+    }
     bool particle::operator>(const particle& p)
-     {
-         return !(bestValue < p.bestValue);
-     }
+    {
+        return !(bestValue < p.bestValue);
+    }
+    bool particle::operator==(const particle& p)
+    {
+        return (bestValue==p.bestValue);
+    }
