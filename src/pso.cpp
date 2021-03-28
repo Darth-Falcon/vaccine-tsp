@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 #include <fstream>
-//#include <omp.h>
+#include <omp.h>
 #include <random>
 #include <algorithm>
 #include <climits>
@@ -109,7 +109,7 @@ void PSO(const int Np, const int Nd, const int Nt, const double vMin, const doub
 	CStopWatch timer;
 
 	timer.startTimer();
-	//#pragma omp parallel default(none) shared(Np, Nd, Nt, objFunc, particles, speed, cities, timer, zeroOne, vMin, vMax, vel, indexes, worstResults, bestTimeStep, gBestValue, gBestPosition, changes) private(vValue) reduction(+:numEvals)
+	#pragma omp parallel default(none) shared(Np, Nd, Nt, objFunc, particles, speed, cities, timer, zeroOne, vMin, vMax, vel, indexes, worstResults, bestTimeStep, gBestValue, gBestPosition, changes, std::cout) private(vValue) reduction(+:numEvals)
 	{
 		std::random_device rd;
 		std::mt19937 rng(rd());
@@ -130,7 +130,7 @@ void PSO(const int Np, const int Nd, const int Nt, const double vMin, const doub
 
 
 		//Evaluate initial fitness
-		//#pragma omp for
+		#pragma omp for
 		for( int p = 0; p < Np; p++)
 		{
 			particles[p].setFitness(objFunc(particles, Nd, p, cities, speed));
@@ -141,16 +141,17 @@ void PSO(const int Np, const int Nd, const int Nt, const double vMin, const doub
 		//Loop for Nt iterations
 		for( int t = 0; t < Nt; t++)
 		{
-			//if(omp_get_thread_num() == 0)
+			if(omp_get_thread_num() == 0)
 			{
 				if(t%100 == 0)
 				{
+					#pragma omp critical
 					std::cout<< "Elapsed Time: " << timer.getElapsedTimeInSec() << "s, Time Step: " << t << "/" << Nt << "\n";
 				}
 			}
 
 			//Update Positions
-			//#pragma omp single
+			#pragma omp single
 			{
 				for( int p = 1; p < Np; p++)
 				{
@@ -168,7 +169,7 @@ void PSO(const int Np, const int Nd, const int Nt, const double vMin, const doub
 			}
 
 			//Evaluate Fitness
-			//#pragma omp for
+			#pragma omp for
 			for( int p = 0; p < Np; p++)
 			{
 				particles[p].setFitness(objFunc(particles, Nd, p, cities, speed));
@@ -176,7 +177,7 @@ void PSO(const int Np, const int Nd, const int Nt, const double vMin, const doub
 			}
 
 			//Update Bests
-			//#pragma omp single
+			#pragma omp single
 			{
 				for (int p = 0; p < Np; p++)
 				{
@@ -202,13 +203,13 @@ void PSO(const int Np, const int Nd, const int Nt, const double vMin, const doub
 				}
 			}
 			//Update Velocities
-			//#pragma omp single
+			#pragma omp single
 			{
 				std::sort(particles.begin(),particles.end(), std::greater <>());
 				worstResults = particles[Np-1].getBestValue();
 			}
 			vValue = 0.0;
-			//#pragma omp for
+			#pragma omp for
 			for( int p = 0; p < Np; p++)
 			{
 				vValue = (vMax * particles[p].getBestValue()) / worstResults;
@@ -239,7 +240,7 @@ void PSO(const int Np, const int Nd, const int Nt, const double vMin, const doub
 	}
 	std::cout << "\nNumber of vaccines distributed per hour: " << gBestValue << "\n\n";
 
-	std::cout << "This result was found on step " << bestTimeStep << " and took " << timer.getElapsedTimeInSec()  << " seconds to find\n\n";
+	std::cout << "This result was found on step " << bestTimeStep << " and took " << timer.getElapsedTimeInSec()  << " seconds to find using " << numEvals << " evaluations\n\n";
 
 	particles.clear();
 	gBestPosition.clear();
