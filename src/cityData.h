@@ -21,6 +21,8 @@ class city
     double getDensity() {return popDensity;}
     std::tuple<double,double> getLocation() {return cords;}
 
+    city& operator=(const city& c);
+
 
     private:
     std::string name;

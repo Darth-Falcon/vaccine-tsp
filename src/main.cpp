@@ -18,7 +18,7 @@ std::vector<city> createData(int numCities, std::string fileName)
 
 	std::vector<city> cities;
 	//Create vector of cities
-	for( int i = 0; i < names.size(); i++)
+	for( int i = 0; (long unsigned int)i < names.size(); i++)
 	{
 		cities.push_back(city(names[i], states[i], populations[i], areas[i], latitudes[i], longitudes[i]));
 	}
@@ -33,7 +33,8 @@ std::vector<city> createData(int numCities, std::string fileName)
 
 int main(int argc, char** argv)
 {
-		std::string fileName;
+
+	std::string fileName;
 	int numCities, numThreads, speed, numParticles, numIterations, maxVelocity;
 	if (argc == 6)
 	{
@@ -50,9 +51,9 @@ int main(int argc, char** argv)
 	else if (argc == 1)
 	{
 		fileName = "../data/cityData.csv";
-		numParticles = 400;
+		numParticles = 500;
 		numCities = 150;
-		numThreads = 16;
+		numThreads = 1;
 		numIterations = 1000;
 		speed = 60;
 		maxVelocity = 5;
@@ -62,11 +63,11 @@ int main(int argc, char** argv)
 		throw std::invalid_argument("Please input 0 or 7 parameters");
 	}
 
-	omp_set_nested(true);
-	omp_set_num_threads(numThreads);
+	//omp_set_nested(true);
+	//omp_set_num_threads(numThreads);
 
 	std::vector<city> cities = createData(numCities, fileName);
-	PSO(numParticles, numCities, numIterations, 0, numCities-1, -maxVelocity, maxVelocity, &tspFitness, cities, speed, numThreads);
+	PSO(numParticles, numCities, numIterations, -maxVelocity, maxVelocity, &tspFitness, cities, speed);
 
 	return 0;
 }

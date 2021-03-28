@@ -10,7 +10,7 @@ class particle
 {
     public:
     particle();
-    particle(vec<int>);
+    particle(vec<int>, double);
     int getPosition(int x) {return position[x];}
     double getVelocity() {return velocity;}
     double getFitness() {return fitness;}

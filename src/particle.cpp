@@ -5,10 +5,10 @@
     template<typename T>
     using vec = std::vector<T>;
     
-    particle::particle(vec<int> newPositions)
+    particle::particle(vec<int> newPositions, double newVelocity)
     {
         position = newPositions;
-        velocity = 0;
+        velocity = newVelocity;
         fitness = INFINITY;
         bestPosition = vec<int>(position.size(), INT_MIN);
         bestValue = -INFINITY;
