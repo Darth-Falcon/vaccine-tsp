@@ -34,24 +34,26 @@ std::vector<city> createData(int numCities, std::string fileName)
 int main(int argc, char* argv[])
 {
 
-	std::string fileName;
+	std::string fileName, outFileName;
 	int numCities, numThreads, speed, numParticles, numIterations, maxVelocity;
-	if (argc == 8)
+
+	if (argc == 9)
 	{
-		std::cerr<< argv[1];
 		fileName = argv[1];
-		numParticles = std::stoi(argv[2]);
-		maxVelocity = std::stoi(argv[3]);
-		numCities = std::stoi(argv[4]);
-		numIterations = std::stoi(argv[5]);
-		numThreads = std::stoi(argv[6]);
-		speed = std::stoi(argv[7]);
+		outFileName = argv[2];
+		numParticles = std::stoi(argv[3]);
+		maxVelocity = std::stoi(argv[4]);
+		numCities = std::stoi(argv[5]);
+		numIterations = std::stoi(argv[6]);
+		numThreads = std::stoi(argv[7]);
+		speed = std::stoi(argv[8]);
 
 		std::cerr<<"File: " << fileName;
 	}
 	else if (argc == 1)
 	{
 		fileName = "../data/cityData.csv";
+		outFileName = "../data/optimum_distribution.txt";
 		numParticles = 400;
 		maxVelocity = 5;
 		numCities = 10;
@@ -69,7 +71,7 @@ int main(int argc, char* argv[])
 	omp_set_num_threads(numThreads);
 
 	std::vector<city> cities = createData(numCities, fileName);
-	PSO(numParticles, numCities, numIterations, -maxVelocity, maxVelocity, &tspFitness, cities, speed);
+	PSO(numParticles, numCities, numIterations, -maxVelocity, maxVelocity, &tspFitness, cities, speed, outFileName);
 
 	return 0;
 }

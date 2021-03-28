@@ -1,4 +1,6 @@
 bin
 build
 debug
+package
 .vscode
+data/*.txt

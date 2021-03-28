@@ -84,7 +84,7 @@ void copyParticle(vec<particle>& particles, int source, int destination, int Nd,
 }
 
 void PSO(const int Np, const int Nd, const int Nt, const double vMin, const double vMax,
-		 double (*objFunc)(vec<particle>, int, int, vec<city>, int), std::vector<city> cities, int speed)
+		 double (*objFunc)(vec<particle>, int, int, vec<city>, int), std::vector<city> cities, int speed, std::string outFileName)
 {
 	//Random distributions
 	std::uniform_real_distribution<double> vel(vMin, vMax);
@@ -109,7 +109,7 @@ void PSO(const int Np, const int Nd, const int Nt, const double vMin, const doub
 	CStopWatch timer;
 
 	timer.startTimer();
-	#pragma omp parallel default(none) shared(Np, Nd, Nt, objFunc, particles, speed, cities, timer, zeroOne, vMin, vMax, vel, indexes, worstResults, bestTimeStep, gBestValue, gBestPosition, changes, initialBest, std::cout) private(vValue) reduction(+:numEvals)
+	#pragma omp parallel default(none) shared(Np, Nd, Nt, objFunc, particles, speed, cities, timer, zeroOne, vMin, vMax, vel, indexes, worstResults, bestTimeStep, gBestValue, gBestPosition, changes, initialBest, outFileName, std::cout) private(vValue) reduction(+:numEvals)
 	{
 		std::random_device rd;
 		std::mt19937 rng(rd());
@@ -250,6 +250,19 @@ void PSO(const int Np, const int Nd, const int Nt, const double vMin, const doub
 	std::cout << "\nNumber of vaccines distributed per hour: " << gBestValue << " which is an improvement on a random selection by "<< std::setprecision(4) << 100*(initialBest/gBestValue) << "%\n\n";
 
 	std::cout << "This result was found on step " << bestTimeStep << " and took " << timer.getElapsedTimeInSec()  << " seconds to find using " << numEvals << " evaluations\n\n";
+
+	std::ofstream outfile;
+	outfile.open(outFileName);
+
+	outfile << "\n\nBest order of cities to distribute vaccine\n\n";
+	for(int c = 0; c < Nd; c++)
+	{
+		outfile << c+1 << ". " << cities[gBestPosition[c]].getName() << ", " << cities[gBestPosition[c]].getState() << "\n";
+	}
+	outfile << "\nTHe number of vaccines distributed per hour is " << gBestValue << ", which is an improvement on a random selection by "<< std::setprecision(4) << 100*(initialBest/gBestValue) << "%\n\n";
+
+	outfile << "This result was found on step " << bestTimeStep << " and took " << timer.getElapsedTimeInSec()  << " seconds to find using " << numEvals << " evaluations\n\n";
+
 
 	particles.clear();
 	gBestPosition.clear();
